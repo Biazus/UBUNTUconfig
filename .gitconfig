@@ -1,0 +1,16 @@
+[user]
+	name = Miller Biazus
+	mail = miller.biazus@gmail.com
+	email = miller.biazus@gmail.com
+[alias]
+	ch = checkout
+	com = commit
+	st = status
+	br = branch
+	re = rebase
+	unstages = reset HEAD --soft
+	unstageh = reset HEAD --hard
+	l1 = log --oneline
+	l2 = log --stat
+	l3 = log --graph
+	caa = commit -a --amend -C HEAD
