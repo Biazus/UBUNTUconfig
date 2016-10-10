@@ -362,3 +362,10 @@ set number
 
 map <Tab> :tabnext<CR>
 map <S-Tab> :tabprevious<CR>
+
+"Formata aviso de limite de 110 caracteres por linha
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%111v.\+/
+set colorcolumn=110
+
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
