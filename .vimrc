@@ -48,7 +48,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -81,10 +81,15 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
+"colorscheme BlackSea
 "colorscheme dracula
-color happy_hacking
+"colorscheme tango-desert
+"colorscheme brighton
+"colorscheme golden
+colorscheme fu
 ""set background=dark
-highlight Normal ctermfg=grey ctermbg=black
+highlight Normal ctermfg=grey
+" ctermbg=black
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -123,9 +128,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak
 set lbr
-set tw=110
+set tw=119
 
 set ai "Auto indent
 set si "Smart indent
@@ -180,7 +185,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -203,6 +208,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
+set ruler
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
@@ -233,6 +239,10 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+"For some reason the previous command wasn't working. Removing whitespaces
+autocmd BufWritePre * %s/\s\+$//e
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -365,7 +375,13 @@ map <S-Tab> :tabprevious<CR>
 
 "Formata aviso de limite de 110 caracteres por linha
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%111v.\+/
+match OverLength /\%110v.\+/
 set colorcolumn=110
 
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
+"autocmd Filetype html setlocal ts=2 sts=2 sw=2
+
+autocmd BufWritePost *.py call Flake8()
+
+map ,pv oimport pdb;pdb.set_trace()<ESC>
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
