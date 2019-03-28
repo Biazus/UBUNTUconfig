@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/miller.biazus/Documents/orchestration/azionmanager/apps/core/middlewares'
+let g:netrw_dirhist_2='/Users/miller.biazus/Documents/orchestration/azionmanager/apps/client/services'
+let g:netrw_dirhist_3='/Users/miller.biazus/Documents/orchestration/azion-billing/apps/payment'
